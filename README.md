@@ -72,4 +72,4 @@ Open an issue for ideas, bugs, or discussion. Forks and pull requests are welcom
 
 ## License
 
-No license has been added yet. Add one before broad reuse outside collaborative review.
+MIT
