@@ -1,0 +1,8 @@
+#page-customer-detail .timeline-item {
+  transition: border-color 180ms ease, transform 180ms ease;
+}
+
+#page-customer-detail .timeline-item:hover {
+  border-color: rgba(34, 211, 238, 0.45);
+  transform: translateY(-1px);
+}

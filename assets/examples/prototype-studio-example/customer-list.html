@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>客户列表示例原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./shared/requirements-ui.css" />
+    <link rel="stylesheet" href="./customer-list.css" />
+  </head>
+  <body class="bg-slate-50 text-slate-900">
+    <div id="page-customer-list" class="min-h-screen">
+      <header class="border-b border-slate-200 bg-white/95 backdrop-blur">
+        <div class="mx-auto max-w-7xl px-6 py-4">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[0.3em] text-slate-500">CRM Prototype</p>
+              <h1 class="mt-1 text-2xl font-semibold text-slate-900">客户列表</h1>
+            </div>
+            <div class="flex items-center gap-3">
+              <a class="rounded-full border border-slate-300 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100" href="./index.html">返回示例入口</a>
+              <button class="rounded-full bg-slate-900 px-4 py-2 text-sm font-medium text-white hover:bg-slate-800">新建客户</button>
+            </div>
+          </div>
+          <nav id="customer-list-shared-nav" class="mt-4"></nav>
+        </div>
+      </header>
+
+      <main class="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-8">
+        <section class="grid gap-4 md:grid-cols-4">
+          <article class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+            <p class="text-sm text-slate-500">客户总数</p>
+            <p class="mt-3 text-3xl font-semibold text-slate-900">428</p>
+            <p class="mt-2 text-sm text-emerald-600">较上周 +6.8%</p>
+          </article>
+          <article class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+            <p class="text-sm text-slate-500">待跟进</p>
+            <p class="mt-3 text-3xl font-semibold text-slate-900">34</p>
+            <p class="mt-2 text-sm text-amber-600">本周需处理 12 条</p>
+          </article>
+          <article class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+            <p class="text-sm text-slate-500">高意向客户</p>
+            <p class="mt-3 text-3xl font-semibold text-slate-900">18</p>
+            <p class="mt-2 text-sm text-cyan-700">可优先推进试点</p>
+          </article>
+          <article class="rounded-3xl bg-white p-5 shadow-sm ring-1 ring-slate-200">
+            <p class="text-sm text-slate-500">流失风险</p>
+            <p class="mt-3 text-3xl font-semibold text-slate-900">7</p>
+            <p class="mt-2 text-sm text-rose-600">建议今日回访</p>
+          </article>
+        </section>
+
+        <section class="rounded-[2rem] bg-white p-6 shadow-sm ring-1 ring-slate-200">
+          <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div class="grid flex-1 gap-3 md:grid-cols-2 xl:grid-cols-4">
+              <label class="flex flex-col gap-2 text-sm text-slate-600">
+                客户名称
+                <input
+                  id="customer-search"
+                  class="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500"
+                  placeholder="请输入客户名称或编号"
+                  type="text"
+                />
+              </label>
+              <label class="flex flex-col gap-2 text-sm text-slate-600">
+                客户状态
+                <select id="customer-status-filter" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500">
+                  <option value="all">全部状态</option>
+                  <option value="active">活跃</option>
+                  <option value="follow">待跟进</option>
+                  <option value="risk">流失风险</option>
+                </select>
+              </label>
+              <label class="flex flex-col gap-2 text-sm text-slate-600">
+                负责人
+                <select id="customer-owner-filter" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500">
+                  <option value="all">全部负责人</option>
+                  <option value="王晨">王晨</option>
+                  <option value="李悦">李悦</option>
+                  <option value="赵宁">赵宁</option>
+                </select>
+              </label>
+              <label class="flex flex-col gap-2 text-sm text-slate-600">
+                最近跟进
+                <input id="customer-followup-filter" class="rounded-2xl border border-slate-200 px-4 py-3 text-sm text-slate-900 outline-none transition focus:border-cyan-500" type="date" />
+              </label>
+            </div>
+            <div class="flex items-center gap-3">
+              <button id="customer-reset-filter" class="rounded-full border border-slate-300 px-4 py-2 text-sm text-slate-700 hover:bg-slate-100">重置</button>
+              <button id="customer-apply-filter" class="rounded-full bg-cyan-600 px-4 py-2 text-sm font-medium text-white hover:bg-cyan-500">查询</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="rounded-[2rem] bg-white shadow-sm ring-1 ring-slate-200">
+          <div class="flex items-center justify-between border-b border-slate-200 px-6 py-4">
+            <div>
+              <h2 class="text-lg font-semibold text-slate-900">客户记录</h2>
+              <p class="mt-1 text-sm text-slate-500">列表使用共享示例数据，并支持跳转到详情页进行联动演示。</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button class="rounded-full border border-slate-300 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">批量分配</button>
+              <button class="rounded-full border border-slate-300 px-3 py-2 text-sm text-slate-700 hover:bg-slate-100">导出</button>
+            </div>
+          </div>
+
+          <div class="overflow-x-auto px-4 py-4">
+            <table class="min-w-full border-separate border-spacing-y-3 text-left">
+              <thead>
+                <tr class="text-xs uppercase tracking-[0.2em] text-slate-500">
+                  <th class="px-4 py-2">客户名称</th>
+                  <th class="px-4 py-2">行业</th>
+                  <th class="px-4 py-2">负责人</th>
+                  <th class="px-4 py-2">状态</th>
+                  <th class="px-4 py-2">最近跟进</th>
+                  <th class="px-4 py-2 text-right">操作</th>
+                </tr>
+              </thead>
+              <tbody id="customer-list-table-body"></tbody>
+            </table>
+            <div id="customer-list-empty-state" class="hidden px-4 py-10 text-center">
+              <p class="text-lg font-medium text-slate-700">没有找到匹配的客户</p>
+              <p class="mt-2 text-sm text-slate-500">可以尝试放宽筛选条件，或重置后重新查看列表。</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="requirements-overlay-root"></div>
+    <div id="dialog-root"></div>
+
+    <script src="./shared/navigation-config.js"></script>
+    <script src="./shared/navigation-ui.js"></script>
+    <script src="./shared/customer-data.js"></script>
+    <script src="./shared/requirements-data.js"></script>
+    <script src="./shared/requirements-ui.js"></script>
+    <script src="./customer-list.js"></script>
+  </body>
+</html>

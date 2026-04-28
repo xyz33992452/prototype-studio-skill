@@ -1,0 +1,4 @@
+version: 1
+display_name: Prototype Studio
+short_description: Multi-mode product prototyping skill
+default_prompt: Generate a Chinese frontend prototype from the provided requirements, choose the right mode for the scenario, keep the output frontend-only by default, use one HTML/CSS/JS file set per page, and include the shared requirements document system when review context is needed.
