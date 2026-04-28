@@ -68,6 +68,8 @@ When contributing, prefer changes that keep:
 - navigation mappings stable
 - examples easy to understand and reuse
 
+Open an issue for ideas, bugs, or discussion. Forks and pull requests are welcome.
+
 ## License
 
 No license has been added yet. Add one before broad reuse outside collaborative review.
